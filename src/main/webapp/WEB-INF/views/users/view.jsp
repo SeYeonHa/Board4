@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +65,22 @@
 	 </tr>
 	 <tr>
 	   <td>포인트</td>
-	   <td>${ vo.upoint }</td>
+	   <td>
+		   <%-- 
+		   <c:if test="${vo.upoint ne 0}">
+		   ${ vo['upoint'] }
+		   </c:if>
+		   --%>
+	   	<c:choose>
+	   		<c:when test="${vo.upoint ne 0}">
+	   			${vo['upoint'] }
+	   		</c:when>
+	   		<c:otherwise>
+	   			<span style="color:red">없음</span>
+	   		</c:otherwise>
+	   	</c:choose>
+	   </td>
+	   <%-- <td>${ vo['upoint'] + 1000 }</td> --%>
 	 </tr>
 	 <tr>
 	   <td>가입일</td>
@@ -73,12 +90,16 @@
 	   <td colspan="2">
 	    <a class="btn btn-primary btn-sm" role="button" 
 	    href="/Users/WriteForm" >회원가입</a>
+	    
 	    <a class="btn btn-primary btn-sm" role="button"
 	     href="/Users/UpdateForm?userid=${ vo.userid }">회원수정</a>
+	     
 	    <a class="btn btn-primary btn-sm" role="button"
 	     href="/Users/Delete?userid=${ vo.userid }">회원삭제</a>
+	     
 	    <a class="btn btn-primary btn-sm" role="button"
 	     href="/Users/List">회원목록</a>
+	     
 	    <a class="btn btn-primary btn-sm" role="button"
 	     href="/">Home</a>
 	   </td>

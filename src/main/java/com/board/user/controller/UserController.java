@@ -27,7 +27,7 @@ public class UserController {
 	//  /Users/List
 	@RequestMapping("/List")
 	public  ModelAndView  list() {
-		// 목록 조회
+		// 사용자 목록 조회
 		List<UserVo>  userList = userMapper.getUserList();
 		
 		ModelAndView  mv       = new ModelAndView();
@@ -99,6 +99,33 @@ public class UserController {
 		return mv;
 	}
 	
+	// /Users/Update
+	@RequestMapping("/Update")
+	public  ModelAndView  update(UserVo userVo) {
+		
+		log.info( "userVo : {}", userVo );
+		// 수정
+		
+		userMapper.updateUser( userVo );
+		
+		ModelAndView  mv  =  new ModelAndView();
+		
+		mv.setViewName("redirect:/Users/List");
+		
+		return mv;
+	}
+	
+	// /Users/Delete?userid=U001
+	@RequestMapping("/Delete")
+	public  ModelAndView  delete( UserVo userVo ) {
+		
+		// 삭제
+		userMapper.deleteUser (userVo);
+		
+		ModelAndView  mv  =  new ModelAndView();
+		mv.setViewName("redirect:/Users/List");
+		return mv;
+	}
 	
 }
 
