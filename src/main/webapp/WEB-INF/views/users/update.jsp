@@ -26,45 +26,41 @@
       color : white;
       font-weight: bold;
    }
-   
-   input[readonly] {
-      background: #EEE;
-   }
 
 </style>
 </head>
 <body>
   <main>
-	<h2>사용자 등록</h2>
-	<form action="/Users/Write" method="POST">
+	<h2>회원정보 수정</h2>
 	<table>
 	 <tr>
 	   <td>아이디</td>
-	   <td><input type="text" name="userid" /></td>
-	 </tr>
-	 <tr>
-	   <td>비밀번호</td>
-	   <td><input type="password" name="passwd" /></td>
+	   <td><input type="text" name="userid"  value="${ vo.userid }" readonly  /></td>
 	 </tr>
 	 <tr>
 	   <td>이름</td>
-	   <td><input type="text" name="username" /></td>
+	   <td><input type="text" name="username" value="${ vo.username  }" /></td>
 	 </tr>
 	 <tr>
 	   <td>이메일</td>
-	   <td><input type="text" name="email" /></td>
+	   <td><input type="text" name="email" value="${ vo.email  }" /></td>
+	 </tr>
+	 <tr>
+	   <td>회원등급</td>
+	   <td><input type="text" name="upt" value="${ vo.upt  }" /></td>
 	 </tr>
 	 <tr>
 	   <td>포인트</td>
-	   <td><input type="text" value="1000" readonly /></td>
+	   <td><input type="text" name="upoint" value="${ vo.upoint  }" /></td>
 	 </tr>
 	 <tr>
 	   <td>가입일</td>
-	   <td><input type="text"  value="${ now }" readonly /></td>
+	   <td><input type="text" name="indate" value="${ vo.indate  }" readonly /></td>
 	 </tr>
+	 
 	 <tr>
 	   <td colspan="2">
-	    <input type="submit" value="추가" />
+	    <input type="submit" value="수정" />
 	    <input type="button" value="목록" id="goList" />
 	   </td>
 	 </tr>
